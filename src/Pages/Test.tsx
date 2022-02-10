@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Movie } from "../types/types";
 import { constant } from "../constant";
@@ -17,7 +17,7 @@ const fetchConfig = {
 };
 
 const Test: React.FC = () => {
-  const params = useParams();
+  // const params = useParams();
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState<Movie[]>([]);
