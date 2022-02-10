@@ -36,3 +36,47 @@
     transform: rotate(360deg);
   }
 }
+
+/* ANCHOR Nav */
+.nav {
+  display: flex;
+}
+
+.nav li:first-child {
+  width: 20%;
+}
+.nav > div {
+  width: 60%;
+}
+
+.category {
+  display: flex;
+  justify-content: space-around;
+}
+
+.genre-cotanier {
+  position: relative;
+}
+
+.genres {
+  position: absolute;
+}
+
+.movie-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem 2rem;
+  padding: 30px;
+}
+.movie-container > div > h2 {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.movie-container img {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
