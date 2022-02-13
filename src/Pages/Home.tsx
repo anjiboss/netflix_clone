@@ -1,55 +1,79 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Dots } from "react-activity";
+import React, { useContext, useEffect, useState } from "react";
+import { Spinner } from "react-activity";
+import { GlobalContext } from "../App";
 import { constant } from "../constant";
 import { Movie } from "../types/types";
+import "react-activity/dist/library.css";
+import FilteredByGenre from "../Components/FilteredByGenre";
 
 const fetchConfig = {
   lang: "en-US",
 };
 
+const link1 = `https://api.themoviedb.org/3/discover/movie?api_key=${
+  constant.Api_Key
+}&language=${
+  fetchConfig.lang
+}&sort_by=popularity.desc&certification_country=ja&include_adult=false&include_video=false&page=${1}&with_watch_monetization_types=flatrate`;
+const link2 = `https://api.themoviedb.org/3/discover/movie?api_key=${
+  constant.Api_Key
+}&language=${
+  fetchConfig.lang
+}&sort_by=popularity.desc&certification_country=ja&include_adult=false&include_video=false&page=${2}&with_watch_monetization_types=flatrate`;
+
 const Home: React.FC = () => {
-  const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState<Movie[]>([]);
+  const { genres } = useContext(GlobalContext);
+  const [movieByGenre, setMovieByGenre] = useState<
+    { name: string; movie: Movie[] }[]
+  >([]);
+
   useEffect(() => {
-    setLoading(true);
-    axios({
-      url: `https://api.themoviedb.org/3/discover/movie?api_key=${constant.Api_Key}&language=${fetchConfig.lang}&sort_by=popularity.desc&certification_country=ja&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&append_to_response=images`,
-      method: "GET",
-    }).then(({ data }) => {
+    const rq1 = axios.get(link1);
+    const rq2 = axios.get(link2);
+    axios.all([rq1, rq2]).then((value) => {
+      console.log(value);
+      setMovies([...value[0].data.results, ...value[1].data.results]);
       setLoading(false);
-      console.log(data);
-      setMovies(data.results);
     });
-  }, [page]);
+  }, []);
+
+  useEffect(() => {
+    const tmp: { name: string; movie: Movie[] }[] = [];
+    genres.forEach((gen) => {
+      const movieByGenre = movies.filter((m) => m.genre_ids.includes(gen.id));
+      tmp.push({
+        name: gen.name,
+        movie: movieByGenre,
+      });
+    });
+    console.log(tmp);
+    setMovieByGenre(tmp);
+  }, [genres, movies]);
+
   return (
     <div>
-      <h1>Test</h1>
-      <div>
-        <Dots size={25} />
-      </div>
-      <button onClick={() => setPage(page + 1)}>Page ++ </button>
-      <button onClick={() => setPage(page - 1)}>Page -- </button>
-      <div className="movie-container">
-        {loading ? (
-          <Dots size={50} />
-        ) : (
-          movies.length > 0 &&
-          movies.map((movie) => (
-            <div key={movie.id}>
-              <img
-                src={
-                  constant.IMG_BASE_URL +
-                  (movie.backdrop_path || movie.poster_path)
-                }
-                alt={movie.title}
-              />
-              <h2> {movie.title}</h2>
-            </div>
-          ))
-        )}
-      </div>
+      {loading ? (
+        <div>
+          <Spinner size={50} color="#fff" />
+        </div>
+      ) : (
+        <div>
+          {movieByGenre.map((genre, i) => {
+            if (genre.movie.length >= 3) {
+              return (
+                <FilteredByGenre
+                  key={i}
+                  genre={genre.name}
+                  movies={genre.movie}
+                />
+              );
+            } else return undefined;
+          })}
+        </div>
+      )}
     </div>
   );
 };

@@ -48,7 +48,7 @@ const Test: React.FC = () => {
           movies.map((movie) => (
             <div key={movie.id}>
               <img
-                src={constant.IMG_BASE_URL + movie.backdrop_path}
+                src={constant.IMG_POSTER_URL + movie.backdrop_path}
                 alt={movie.title}
               />
               <h2>Name: {movie.title}</h2>
