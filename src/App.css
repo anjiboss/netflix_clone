@@ -40,6 +40,15 @@
 /* ANCHOR Nav */
 .nav {
   display: flex;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .nav li:first-child {
@@ -52,6 +61,7 @@
 .category {
   display: flex;
   justify-content: space-around;
+  color: #fff;
 }
 
 .genre-cotanier {
@@ -62,21 +72,60 @@
   position: absolute;
 }
 
+/* ANCHOR Genre Line */
+
+.line-container {
+  position: relative;
+  width: auto;
+  margin-bottom: 20px;
+  overflow: hidden;
+  height: 250px;
+}
+.line-container h2 {
+  color: #fff;
+}
+
+.line-movie {
+  display: flex;
+}
+
+.line-movie > div {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.left-pagnition {
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+.right-pagnition {
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+/* ANCHOR Movie*/
 .movie-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 3rem 2rem;
   padding: 30px;
 }
-.movie-container > div > h2 {
+.movie {
+  margin: 3px;
+}
+.movie > h2 {
+  color: #fff;
   font-size: 0.8rem;
   text-align: center;
 }
 
-.movie-container img {
+.movie img {
   width: 100%;
-  height: 30vh;
+  height: 60%;
   object-fit: cover;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  pointer-events: none;
 }
