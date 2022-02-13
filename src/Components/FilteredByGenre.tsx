@@ -12,11 +12,11 @@ const FilteredByGenre: React.FC<FilteredByGenreProps> = ({ genre, movies }) => {
   const [showPag, setShowPag] = useState(false);
   const [pagnition, setPagnition] = useState(0);
   const totalPage = useMemo(() => {
-    return Math.floor(movies.length / 5);
+    return Math.floor(movies.length / 8);
   }, [movies]);
 
   const renderMovie = useMemo(() => {
-    return movies.slice(pagnition * 5, pagnition * 5 + 5);
+    return movies.slice(pagnition * 8, pagnition * 8 + 8);
   }, [movies, pagnition]);
 
   return (
