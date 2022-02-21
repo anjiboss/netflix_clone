@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Movie } from "../types/types";
 import OneMovie from "./OneMovie";
 import { motion } from "framer-motion";
+import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 
 interface FilteredByGenreProps {
   genre: string;
@@ -33,7 +34,7 @@ const FilteredByGenre: React.FC<FilteredByGenreProps> = ({ genre, movies }) => {
           }}
           className="left-pagnition"
         >
-          <button>{"<"}</button>
+          <AiFillLeftCircle size={50} color="#fff" />
         </div>
       )}
       <motion.div className="line-movie">
@@ -46,7 +47,7 @@ const FilteredByGenre: React.FC<FilteredByGenreProps> = ({ genre, movies }) => {
           onClick={() => setPagnition((prev) => prev + 1)}
           className="right-pagnition"
         >
-          <button>{">"}</button>
+          <AiFillRightCircle color="#fff" size={50} />
         </div>
       )}
     </motion.div>

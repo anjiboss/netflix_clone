@@ -4,7 +4,15 @@ import Navbar from "./Navbar";
 const Header: React.FC = () => {
   return (
     <>
-      <Navbar />
+      <div
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: "10vh",
+        }}
+      >
+        <Navbar />
+      </div>
     </>
   );
 };
