@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     { name: string; movie: Movie[] }[]
   >([]);
 
-  // ANCHOR Get movies
+  // ANCHOR Set Filter movies
   useEffect(() => {
     const rand = randInt(0, movies.length - 1);
     setBillboard(movies[rand]);
