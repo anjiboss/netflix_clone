@@ -78,6 +78,7 @@ a {
 }
 .movie {
   margin: 3px;
+  cursor: pointer;
 }
 .movie > h2 {
   color: #fff;
@@ -92,4 +93,32 @@ a {
   border-radius: 1rem;
   margin-bottom: 1rem;
   pointer-events: none;
+}
+
+/* ANCHOR Search bar */
+.search-bar {
+  width: 250px;
+  /* height: 50px; */
+  background: none;
+  color: "#000";
+}
+
+.search-bar > div {
+  background: none;
+  color: "#000";
+}
+
+.search-bar > input {
+  color: #fff;
+}
+
+/* ANCHOR Modal */
+.movie-details {
+  color: #fff;
+  padding: 0px 10px;
+}
+
+.detail-container {
+  display: flex;
+  justify-content: space-around;
 }
