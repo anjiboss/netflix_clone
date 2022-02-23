@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../App";
 import { motion, useCycle } from "framer-motion";
+import SearchBar from "./SearchBar";
 
 const item = {
   open: {
@@ -58,7 +59,9 @@ const Navbar: React.FC = () => {
             </motion.div>
           </motion.div>
         </div>
-        <li>Search{/* <SearchBar /> */}</li>
+        <li>
+          <SearchBar />
+        </li>
       </ul>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { constant } from "../constant";
 import { Movie } from "../types/types";
 
@@ -7,9 +7,6 @@ interface BillBoardProps {
 }
 
 const BillBoard: React.FC<BillBoardProps> = ({ movie }) => {
-  useEffect(() => {
-    console.log(movie);
-  }, [movie]);
   return (
     <div
       style={{
@@ -17,19 +14,21 @@ const BillBoard: React.FC<BillBoardProps> = ({ movie }) => {
         height: "60vh",
       }}
     >
-      <div
-        style={{
-          backgroundImage: `url(${
-            constant.IMG_FULLSIZE_URL + movie.backdrop_path
-          })`,
-          width: "100%",
-          height: "80vh",
-          backgroundSize: "cover",
-          position: "absolute",
-          top: "10vh",
-          left: 0,
-        }}
-      ></div>
+      {movie && (
+        <div
+          style={{
+            backgroundImage: `url(${
+              constant.IMG_FULLSIZE_URL + movie.backdrop_path
+            })`,
+            width: "100%",
+            height: "80vh",
+            backgroundSize: "cover",
+            position: "absolute",
+            top: "2vh",
+            left: 0,
+          }}
+        ></div>
+      )}
     </div>
   );
 };
