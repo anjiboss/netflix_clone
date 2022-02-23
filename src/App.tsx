@@ -2,7 +2,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Test from "./Pages/Test";
 import NotFound from "./Pages/NotFound";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
@@ -11,6 +10,7 @@ import axios from "axios";
 import { constant } from "./constant";
 import { Movie } from "./types/types";
 import MovieModal from "./Components/MovieModal";
+import Search from "./Pages/Search";
 
 interface GlobalContextType {
   genres: {
@@ -108,13 +108,15 @@ function App() {
         }}
       >
         <Header />
-        {openModal && <MovieModal />}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="/test/:testId" element={<Test />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <main>
+          {openModal && <MovieModal />}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="search" element={<Search />} />
+            <Route path="about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
         <Footer />
       </GlobalContext.Provider>
     </>

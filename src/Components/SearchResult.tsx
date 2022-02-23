@@ -10,7 +10,11 @@ const SearchResult: React.FC<Props> = ({ movies }) => {
   return (
     <div className="movie-container">
       {movies.length > 0 &&
-        movies.map((movie) => <OneMovie movie={movie} key={movie.id} />)}
+        movies.map((movie) =>
+          movie.backdrop_path || movie.poster_path ? (
+            <OneMovie movie={movie} key={movie.id} />
+          ) : undefined
+        )}
     </div>
   );
 };

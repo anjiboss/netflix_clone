@@ -10,7 +10,6 @@ interface MovieProps {
 
 const OneMovie: React.FC<MovieProps> = ({ movie }) => {
   const { setModalMovie, setOpenModal } = useContext(GlobalContext);
-
   return (
     <motion.div
       whileHover={{

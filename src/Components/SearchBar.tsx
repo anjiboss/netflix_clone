@@ -1,10 +1,13 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { GlobalContext } from "../App";
 import SearchRecommend from "./SearchRecommend";
 
 const SearchBar: React.FC = () => {
   const { movies } = useContext(GlobalContext);
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
   const options = useMemo(() => {
     const tmp: {
       value: number;
@@ -32,6 +35,19 @@ const SearchBar: React.FC = () => {
             ...base,
             color: "#fff",
           }),
+        }}
+        onInputChange={(e) => {
+          setSearch(e);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            navigate({
+              pathname: "search",
+              search: `${createSearchParams({
+                search,
+              })}`,
+            });
+          }
         }}
         components={{ Option: SearchRecommend }}
         noOptionsMessage={() => "Press Enter To Search for More"}

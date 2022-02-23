@@ -20,6 +20,7 @@ const MovieModal: React.FC = () => {
   const { openModal, setOpenModal, modalMovie } = useContext(GlobalContext);
   const [movie, setMovie] = useState<MovieDetail | null>(null);
   useEffect(() => {
+    console.log({ modalMovie });
     if (modalMovie) {
       getMovieDetail(modalMovie.id).then(({ data }) => {
         console.log(data);
@@ -52,10 +53,13 @@ const MovieModal: React.FC = () => {
         >
           <div>
             <img
-              src={`${constant.IMG_FULLSIZE_URL + movie.backdrop_path}`}
+              src={`${
+                constant.IMG_FULLSIZE_URL +
+                (movie.backdrop_path ?? movie.poster_path)
+              }`}
               style={{
                 width: "100%",
-                height: "50%",
+                height: "45vh",
                 objectFit: "cover",
               }}
               alt="background"
