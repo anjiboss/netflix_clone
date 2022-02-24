@@ -11,7 +11,7 @@ const BillBoard: React.FC<BillBoardProps> = ({ movie }) => {
     <div
       style={{
         width: "100vw",
-        height: "60vh",
+        height: "70vh",
       }}
     >
       {movie && (

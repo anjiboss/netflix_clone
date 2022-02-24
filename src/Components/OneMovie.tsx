@@ -13,7 +13,7 @@ const OneMovie: React.FC<MovieProps> = ({ movie }) => {
   return (
     <motion.div
       whileHover={{
-        scale: 1.05,
+        scale: 1.5,
       }}
       className="movie"
       onClick={() => {
