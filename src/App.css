@@ -1,5 +1,6 @@
 main {
   min-height: 100vh;
+  padding: 0px 50px;
 }
 
 /* ANCHOR Nav */
@@ -16,8 +17,8 @@ a {
   color: #fff;
 }
 
-.nav li:first-child {
-  width: 20%;
+.nav > li:first-child {
+  width: 10%;
 }
 .nav > div {
   width: 60%;
@@ -25,8 +26,8 @@ a {
 
 .category {
   display: flex;
-  justify-content: space-around;
   color: #fff;
+  gap: 50px;
 }
 
 .genre-cotanier {

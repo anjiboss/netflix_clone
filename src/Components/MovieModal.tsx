@@ -92,14 +92,17 @@ const MovieModal: React.FC = () => {
                 </p>
                 <p>公開日: {movie.release_date}</p>
               </div>
-              <div className="detail-container">
+              <div
+                style={{
+                  textAlign: "center",
+                }}
+              >
                 <span>
                   ジャンル:
                   {movie.genres.map((g) => {
                     return <span key={g.id}>{g.name + " "}</span>;
                   })}
                 </span>
-                <span></span>
               </div>
               <div>
                 <p style={{ padding: "0 10px" }}>{movie.overview}</p>

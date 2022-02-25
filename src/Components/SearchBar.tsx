@@ -26,6 +26,7 @@ const SearchBar: React.FC = () => {
       <Select
         className="search-bar"
         options={options}
+        placeholder="Search..."
         styles={{
           input: (base) => ({
             ...base,
